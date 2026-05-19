@@ -32,11 +32,11 @@ chmod 700 "/home/$user/Work"
 #chmod läses som 7 0 0 där 7 är för ägaren, 0 är group rättigheter och sista 0:an är rättigheterna för alla andra.
 #Med chmod 700 har däför $user fulla rättigheter över filerna som root tilldelat dom.
 
-echo "Welcome $user" > /home/$user/Welcome.txt
+echo "Welcome $user" > /home/$user/welcome.txt
 # Genom att använda > skickas echo meddelandet och filen Welcome.txt skapas.
 # Genom att sedan köra cat Welcome.txt kan man se innehållet i filen.
 # > skickar med andra ord outputen till en fil istället för rätt ut i terminalen.
-cut -d: -f1 /etc/passwd >> /home/$user/Welcome.txt
+cut -d: -f1 /etc/passwd >> /home/$user/welcome.txt
 # cut används för att klippa ut delar av text
 # -d agerar som ett sätt att separera text, i detta fallet är det ":" som vi letar efter.
 # -f1 använder första fältet i texten.
