@@ -16,7 +16,8 @@ fi
 # fi är slutet av ett if statment.
 
 for user in "$@"; do
-# for 
+# För användare i HELA argumentlistan, gör detta!
+# Hade man velat punktmarkera är det $1 - $9 som gäller, exempel är sudo ./test.sh test1 test2 test3 test4 osv och man bara vill välja test3 så blir det "for user in "$3"; do".
 echo "creating $user"
 useradd -m "$user"
 # useradd + -m skapar användaren + en hemkatalog samtidigt, blir då /home/användarnamnet
@@ -44,6 +45,10 @@ cut -d: -f1 /etc/passwd >> /home/$user/welcome.txt
 # Genom detta så istället för massa tecken, siffor och bokstäver som är svåra att läsa så tar den bara första delen i testen till nästa : vilket blir användarnamnet.
 # >> skickar meddelandet längst ner i filen, i detta fallet lösenordet för användaren
 chown -R "$user:$user" "/home/$user"
+#chown är change owner, eftersom filerna som skapas, skapas som root så måste man byta ägare på dom till $user eller då användarnamnet
+# -R blir allt inuti mappen, så allt som ligger i mapparna följer med ändringen
+# $user:$user är vem som ska äga filen/filerna och den högra anger gruppen
+# "/home/$user" är katalogen/fil/mapp man vill ändra ägareskapet på.
 
 done
 # done avslutar for statment
