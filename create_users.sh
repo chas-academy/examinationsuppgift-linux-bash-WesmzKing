@@ -42,5 +42,7 @@ cut -d: -f1 /etc/passwd >> /home/$user/welcome.txt
 # -f1 använder första fältet i texten.
 # Genom detta så istället för massa tecken, siffor och bokstäver som är svåra att läsa så tar den bara första delen i testen till nästa : vilket blir användarnamnet.
 # >> skickar meddelandet längst ner i filen, i detta fallet lösenordet för användaren
+chown -R "$user:$user" "/home/$user"
+
 done
 # done avslutar for statment
